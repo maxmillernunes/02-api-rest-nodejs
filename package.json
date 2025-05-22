@@ -1,9 +1,11 @@
 {
   "name": "02-api-rest-nodejs",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/server.ts",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "knex": "tsx ./node_modules/knex/bin/cli.js --knexfile knexfile.ts",
     "lint": "eslint src --ext .ts --fix"
   },
   "keywords": [],
