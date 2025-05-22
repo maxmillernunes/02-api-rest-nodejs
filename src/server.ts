@@ -1,12 +1,14 @@
 import fastify from 'fastify'
-import { knex } from './database'
+import { knexInstance } from './database'
 
 const app = fastify()
 
 app.get('/hello', async (req, res) => {
-  const tables = await knex('sqlite_schema').select('*')
+  const transactions = await knexInstance('transactions')
+    .where('amount', 1000)
+    .select('*')
 
-  return tables
+  return res.status(200).send({ transactions })
 })
 
 app.listen({ port: 3333 }).then(() => {
