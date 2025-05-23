@@ -1,17 +1,17 @@
 import fastify from 'fastify'
+import cookie from '@fastify/cookie'
 import { env } from './env'
-import { knexInstance } from './database'
+import { transactionsRoute } from './routes/transactions'
 
 const app = fastify()
 
-app.get('/hello', async (req, res) => {
-  const transactions = await knexInstance('transactions')
-    .where('amount', 1000)
-    .select('*')
+app.register(cookie)
+app.register(transactionsRoute, { prefix: 'transactions' })
 
-  return res.status(200).send({ transactions })
-})
-
-app.listen({ port: env.PORT }).then(() => {
-  console.log('Server is running on http://localhost:3333')
-})
+app
+  .listen({
+    port: env.PORT,
+  })
+  .then(() => {
+    console.log('Server is running on http://localhost:3333')
+  })
