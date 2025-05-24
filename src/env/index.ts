@@ -1,5 +1,4 @@
 import { config } from 'dotenv'
-import knex from 'knex'
 import { z } from 'zod'
 
 if (process.env.NODE_ENV === 'test') {
@@ -10,8 +9,9 @@ if (process.env.NODE_ENV === 'test') {
 
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('production'),
+  DATABASE_CLIENT: z.enum(['sqlite', 'pg']).default('sqlite'),
   DATABASE_URL: z.string(),
-  PORT: z.number().default(3333),
+  PORT: z.coerce.number().default(3000),
 })
 
 const _env = envSchema.safeParse(process.env)

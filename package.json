@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "./src/server.ts",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "test": "vitest",
@@ -15,6 +18,14 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "dotenv": "^16.5.0",
+    "fastify": "^5.3.3",
+    "knex": "^3.1.0",
+    "pg": "^8.16.0",
+    "zod": "^3.25.20"
+  },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^22.15.21",
@@ -24,14 +35,7 @@
     "tsup": "^8.5.0",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.4"
-  },
-  "dependencies": {
-    "@fastify/cookie": "^11.0.2",
-    "dotenv": "^16.5.0",
-    "fastify": "^5.3.3",
-    "knex": "^3.1.0",
-    "sqlite3": "^5.1.7",
-    "zod": "^3.25.20"
+    "vitest": "^3.1.4",
+    "sqlite3": "^5.1.7"
   }
 }
